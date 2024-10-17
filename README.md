@@ -13,7 +13,7 @@ from src.Segment import Segment
 
 engine = Engine(50, 5, ".")
 
-mainLevel = Level(0, engine)
+mainLevel = Level(engine)
 
 mainLevel.addObject(Point(0, 0, "*"))
 mainLevel.addObject(Point(50, 0, "*"))
