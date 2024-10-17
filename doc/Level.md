@@ -7,10 +7,9 @@ You can set size of your game, add objects, remove objects, the character for th
 # Constructor
 
 By default:
-- `size_x = 20` The size of x-axis
-- `size_y = 8` The size of y-axis
-- `char = '.'` The background character
-- `mainLevel = None` The current level
+- size_x = 20
+- size_y = 8
+- char = '.'
 
 Define a specific "window": ``Engine(X, Y)``, 
 example:
@@ -26,14 +25,8 @@ e = Engine(10,10, "A")
 
 # Methods
 
-`getSizeX()` Return the size on the x-axis.
+`display()` Show the level.
 
-`getSizeY()` Return the size on the y-axis.
+`addObject(object)` Add an object ([Point](Point.md), [Segment](Segment.md), etc.) to list of objects
 
-`getChar()` Return the character for the background.
-
-`display()` Call the level display function.
-
-`refresh()` Refresh the "UI" of the game
-
-`setCurrentLevel(l: Level)` Set the current level of the game.
+`removeObject(x:int ,y:int)` Remove an object from list of objects (need the position, so X and Y)
