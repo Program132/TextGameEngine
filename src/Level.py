@@ -1,7 +1,9 @@
+from src.Triangle import Triangle
 from src.Point import Point
 from src.Segment import Segment
 from src.Rectangle import Rectangle
 from src.Engine import Engine
+
 
 class Level:
     def __init__(self, e: Engine = None):
@@ -20,6 +22,8 @@ class Level:
                 del self.objects[i]
             elif isinstance(o, Rectangle) and o.getUpX() == x and o.getUpY() == y:
                 del self.objects[i]
+            elif isinstance(o, Triangle) and o.getUpPoint().getX() == x and o.o.getUpPoint().getY() == y:
+                del self.objects[i]
 
     def display(self):
         s = ""
@@ -32,6 +36,9 @@ class Level:
                 for point in obj.getPoints():
                     points_map[(point.getX(), point.getY())] = point.getChar()
             elif isinstance(obj, Rectangle):
+                for point in obj.getPoints():
+                    points_map[(point.getX(), point.getY())] = point.getChar()
+            elif isinstance(obj, Triangle):
                 for point in obj.getPoints():
                     points_map[(point.getX(), point.getY())] = point.getChar()
 
