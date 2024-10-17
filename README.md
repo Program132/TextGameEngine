@@ -34,3 +34,5 @@ engine.display()
 [Point](doc/Point.md): The Point class.
 
 [Segment](doc/Segment.md): The Segment class.
+
+[Rectangle](doc/Rectangle.md): The Rectangle class.
