@@ -13,11 +13,17 @@ class Point:
     def getChar(self):
         return self.char
 
-    def setX(self, x:int):
+    def setX(self, x: int):
         self.x = x
 
-    def setY(self, y:int):
+    def setY(self, y: int):
         self.x = y
 
-    def setChar(self, c:str):
+    def setChar(self, c: str):
         self.char = c
+
+    def __str__(self):
+        return f"({self.getX()}, {self.getY()})"
+
+    def __repr__(self):
+        return f"({self.getX()}, {self.getY()})"
