@@ -3,7 +3,7 @@ from src.Point import Point
 from src.Segment import Segment
 from src.Triangle import Triangle
 from src.Rectangle import Rectangle
-from src.Cercle import Cercle
+from src.Circle import Circle
 
 class Level:
     def __init__(self, e: Engine = None):
@@ -24,7 +24,7 @@ class Level:
                 del self.objects[i]
             elif isinstance(o, Triangle) and o.getUpPoint().getX() == x and o.getUpPoint().getY() == y:
                 del self.objects[i]
-            elif isinstance(o, Cercle) and o.getCenterX() == x and o.getCenterY() == y:
+            elif isinstance(o, Circle) and o.getCenterX() == x and o.getCenterY() == y:
                 del self.objects[i]
 
     def display(self):
@@ -43,7 +43,7 @@ class Level:
             elif isinstance(obj, Triangle):
                 for point in obj.getPoints():
                     points_map[(point.getX(), point.getY())] = point.getChar()
-            elif isinstance(obj, Cercle):
+            elif isinstance(obj, Circle):
                 for point in obj.getPoints():
                     points_map[(point.getX(), point.getY())] = point.getChar()
 

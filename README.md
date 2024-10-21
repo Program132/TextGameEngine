@@ -41,7 +41,9 @@ from src.Triangle import Triangle
 
 engine = Engine(50, 5, ".")
 mainLevel = Level(engine)
-mainLevel.addObject(Triangle(Segment(1, 2, 5, 2), 3, 0))
+up = Triangle(Segment(1, 2, 5, 2), 3, 0)
+up.setUpPointChar("*")
+mainLevel.addObject(up)
 mainLevel.addObject(Segment(3, 4, 3, 3, False, "|"))
 engine.setCurrentLevel(mainLevel)
 engine.display()
@@ -66,3 +68,5 @@ engine.display()
 [Segment](doc/Segment.md): The Segment class.
 
 [Rectangle](doc/Rectangle.md): The Rectangle class.
+
+[Circle](doc/Circle.md): The Circle class.

@@ -1,7 +1,7 @@
 import math
 from src.Point import Point
 
-class Cercle:
+class Circle:
     def __init__(self, x: int = 0, y: int = 0, r: int = 1):
         self.center_x = x
         self.center_y = y
