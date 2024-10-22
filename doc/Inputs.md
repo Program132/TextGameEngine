@@ -1,6 +1,6 @@
 # Description
 
-Manage keys pressed by user, to do it we use the libs _keyboard_ and _time_.
+Manage keys pressed by user, we use the libs _keyboard_ and _time_.
 
 # Example
 
