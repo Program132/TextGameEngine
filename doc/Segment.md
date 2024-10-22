@@ -9,8 +9,8 @@ By default:
 - `y1 = 0`: Y-coordinate of the first point.
 - `x2 = 0`: X-coordinate of the second point.
 - `y2 = 0`: Y-coordinate of the second point.
-- `collide = False`: Indicates whether the segment can collide.
 - `char = '-'`: The character used to represent the segment by default.
+- `canCollide = False`: Collision between the object and Player object (from Player class)
 
 Define a horizontal segment with collision detection:
 ```python

@@ -21,7 +21,7 @@ By default:
 - `y_up = 0`: Y-coordinate of the highest vertice
 - `upPointChar = 'Ʌ'`: The character by default for a classic triangle.
 - `upPointCharInverted = 'V'`: The character by default for an inverted triangle.
-- `canCollide = False`: Disable collision by default.
+- `canCollide = False`: Collision between the object and Player object (from Player class)
 
 
 # Methods

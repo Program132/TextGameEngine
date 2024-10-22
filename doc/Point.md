@@ -5,9 +5,10 @@ A point is a simple char in the "UI", it can be everything you want.
 # Constructor
 
 By default:
-- x = 0
-- y = 0
-- char = '*'
+- `x = 0`: X position
+- `y = 0`: Y position
+- `char = '*'`: Character for the representation in the game
+- `canCollide = False`: Collision between the object and Player object (from Player class)
 
 Define a specific position: ``Point(X, Y)``, 
 example:``p = Point(10,10)``

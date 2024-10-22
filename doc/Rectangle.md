@@ -9,7 +9,7 @@ By default:
 - `up_y = 0`: Y-coordinate of the top-left corner.
 - `down_x = 1`: X-coordinate of the bottom-right corner.
 - `down_y = 1`: Y-coordinate of the bottom-right corner.
-- `collide = False`: Indicates whether the rectangle can collide.
+- `canCollide = False`: Collision between the object and Player object (from Player class)
 
 Define a rectangle without collision detection:
 ```python

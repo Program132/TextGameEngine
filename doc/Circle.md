@@ -13,9 +13,9 @@ By default:
 - `LeftRightChar = '|'`: Character representing the left and right sides of the circle.
 - `DownChar = '¯'`: Character representing the bottom of the circle.
 - `VoidChar = ''`: The empty space inside the circle.
+- `canCollide = False`: Collision between the object and Player object (from Player class)
 
-Exemple:
-
+Example:
 ```python
 from src.Models.Circle import Circle
 from src.Engine import Engine
