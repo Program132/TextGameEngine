@@ -1,4 +1,4 @@
-from src.Point import Point
+from src.Models.Point import Point
 
 
 class Segment:

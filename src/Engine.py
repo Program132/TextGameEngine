@@ -1,7 +1,3 @@
-from src.Point import Point
-from src.Segment import Segment
-from src.Rectangle import Rectangle
-
 class Engine:
     def __init__(self, x=20, y=8, c='.'):
         self.size_x = x

@@ -1,9 +1,9 @@
 from src.Engine import Engine
-from src.Point import Point
-from src.Segment import Segment
-from src.Triangle import Triangle
-from src.Rectangle import Rectangle
-from src.Circle import Circle
+from src.Models.Point import Point
+from src.Models.Segment import Segment
+from src.Models.Triangle import Triangle
+from src.Models.Rectangle import Rectangle
+from src.Models.Circle import Circle
 
 
 class Level:

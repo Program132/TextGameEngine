@@ -1,5 +1,5 @@
 import math
-from src.Point import Point
+from src.Models.Point import Point
 
 class Circle:
     def __init__(self, x: int = 0, y: int = 0, r: int = 1):

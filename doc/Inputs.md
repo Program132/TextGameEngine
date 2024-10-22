@@ -9,7 +9,7 @@ We get every keys pressed in the function manageKeysPressed, and we added a poin
 ```python
 from src.Engine import Engine
 from src.Level import Level
-from src.Point import Point
+from src.Models.Point import Point
 import keyboard
 import time
 
@@ -24,6 +24,7 @@ engine.display()
 def manageKeysPressed(event):
     print(event.name)
 
+
 keyboard.on_press(manageKeysPressed)
 
 running = True
@@ -34,12 +35,13 @@ while running:
 ```
 
 Move a point (on the y-axis):
+
 ```python
 from src.Engine import Engine
 from src.Level import Level
 import keyboard
 import time
-from src.Point import Point
+from src.Models.Point import Point
 
 engine = Engine(50, 5, ".")
 mainLevel = Level(engine)

@@ -7,9 +7,9 @@ Text Game Engine is a project in Python to create 2D games with a text style, li
 ```python
 from src.Engine import Engine
 from src.Level import Level
-from src.Point import Point
-from src.Rectangle import Rectangle
-from src.Segment import Segment
+from src.Models.Point import Point
+from src.Models.Rectangle import Rectangle
+from src.Models.Segment import Segment
 
 engine = Engine(50, 5, ".")
 mainLevel = Level(engine)
@@ -33,11 +33,12 @@ engine.display()
 ```
 
 Draw a Christmas tree:
+
 ```python
 from src.Engine import Engine
 from src.Level import Level
-from src.Segment import Segment
-from src.Triangle import Triangle
+from src.Models.Segment import Segment
+from src.Models.Triangle import Triangle
 
 engine = Engine(50, 5, ".")
 mainLevel = Level(engine)

@@ -17,7 +17,7 @@ By default:
 Exemple:
 
 ```python
-from src.Circle import Circle
+from src.Models.Circle import Circle
 from src.Engine import Engine
 from src.Level import Level
 

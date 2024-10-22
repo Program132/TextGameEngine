@@ -1,5 +1,5 @@
-from src.Segment import Segment
-from src.Point import Point
+from src.Models.Segment import Segment
+from src.Models.Point import Point
 
 
 class Triangle:

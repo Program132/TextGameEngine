@@ -1,4 +1,4 @@
-from src.Segment import Segment
+from src.Models.Segment import Segment
 
 
 class Rectangle:
