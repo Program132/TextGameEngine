@@ -73,3 +73,5 @@ engine.display()
 [Circle](doc/Circle.md): The Circle class.
 
 [Inputs](doc/Circle.md): Manage inputs from user.
+
+[Player](doc/Circle.md): Player class, your main character in your game.
