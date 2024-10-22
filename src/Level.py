@@ -85,3 +85,9 @@ class Level:
                     s += self.engine.getChar()
             s += "\n"
         print(s)
+
+    def getPoint(self, x: int, y: int):
+        if (x, y) in self.points_map:
+            return self.points_map[(x, y)]
+        return None
+

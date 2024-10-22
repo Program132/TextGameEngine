@@ -24,7 +24,7 @@ class Point:
         self.char = c
 
     def getCanCollide(self):
-        return self.canCollide
+        return bool(self.canCollide)
 
     def setCanCollide(self, c: bool):
         self.canCollide = c
