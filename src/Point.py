@@ -17,7 +17,7 @@ class Point:
         self.x = x
 
     def setY(self, y: int):
-        self.x = y
+        self.y = y
 
     def setChar(self, c: str):
         self.char = c
