@@ -76,4 +76,7 @@ class Triangle:
         points.extend(left_points)
         points.extend(right_points)
 
+        for p in points:
+            p.setCanCollide(self.canCollide)
+
         return points

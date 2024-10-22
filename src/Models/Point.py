@@ -3,6 +3,7 @@ class Point:
         self.x = x
         self.y = y
         self.char = c
+        self.canCollide = False
 
     def getX(self):
         return self.x
@@ -21,6 +22,12 @@ class Point:
 
     def setChar(self, c: str):
         self.char = c
+
+    def getCanCollide(self):
+        return self.canCollide
+
+    def setCanCollide(self, c: bool):
+        self.canCollide = c
 
     def __str__(self):
         return f"({self.getX()}, {self.getY()})"

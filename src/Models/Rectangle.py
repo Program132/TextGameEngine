@@ -53,4 +53,8 @@ class Rectangle:
         segments = self.getSegments()
         for s in segments:
             l.extend(s.getPoints())
+
+        for p in l:
+            p.setCanCollide(self.canCollide)
+
         return l

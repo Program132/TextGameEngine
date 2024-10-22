@@ -10,6 +10,7 @@ class Circle:
         self.LeftRightChar = "|"
         self.DownChar = "¯"
         self.VoidChar = ""
+        self.canCollide = False
 
     def getCenterX(self):
         return self.center_x
@@ -53,6 +54,12 @@ class Circle:
     def setVoidChar(self, char: str):
         self.VoidChar = char
 
+    def getCollision(self):
+        return self.canCollide
+
+    def setCollision(self, c:bool):
+        self.canCollide = c
+
     def getPoints(self):
         points = []
 
@@ -78,5 +85,8 @@ class Circle:
                               (right_point.getX(), right_point.getY()),
                               (down_point.getX(), down_point.getY())]:
                 points.append(Point(x, y, " "))
+
+        for p in points:
+            p.setCanCollide(self.canCollide)
 
         return points

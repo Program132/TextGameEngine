@@ -69,5 +69,8 @@ class Segment:
                 err += dx
                 y1 += sy
 
+        for p in l:
+            p.setCanCollide(self.canCollide)
+
         return l
 
