@@ -10,7 +10,7 @@ mainLevel = Level(engine)
 
 PLAYER = Player(3, 1, 'P')
 wall_left = Point(5, 3)
-wall_left.setCanCollide(False)
+wall_left.setCanCollide(True)
 
 mainLevel.addObject(PLAYER)
 mainLevel.addObject(wall_left)
@@ -23,7 +23,7 @@ def manageKeysPressed(event):
         mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
         PLAYER.moveUp()
         currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or (isinstance(currentPoint, Point) and currentPoint.canCollide()):
+        if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
             mainLevel.addObject(PLAYER)
             engine.refresh()
         else:
@@ -34,7 +34,7 @@ def manageKeysPressed(event):
         mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
         PLAYER.moveDown()
         currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or (isinstance(currentPoint, Point) and currentPoint.canCollide()):
+        if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
             mainLevel.addObject(PLAYER)
             engine.refresh()
         else:
@@ -45,7 +45,7 @@ def manageKeysPressed(event):
         mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
         PLAYER.moveRight()
         currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or (isinstance(currentPoint, Point) and currentPoint.canCollide()):
+        if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
             mainLevel.addObject(PLAYER)
             engine.refresh()
         else:
@@ -56,7 +56,7 @@ def manageKeysPressed(event):
         mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
         PLAYER.moveLeft()
         currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or (isinstance(currentPoint, Point) and currentPoint.canCollide()):
+        if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
             mainLevel.addObject(PLAYER)
             engine.refresh()
         else:
