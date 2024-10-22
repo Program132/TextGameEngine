@@ -70,3 +70,5 @@ engine.display()
 [Rectangle](doc/Rectangle.md): The Rectangle class.
 
 [Circle](doc/Circle.md): The Circle class.
+
+[Inputs](doc/Circle.md): Manage inputs from user.
