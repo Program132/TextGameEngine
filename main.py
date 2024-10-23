@@ -4,7 +4,7 @@ from src.Engine import Engine
 from src.Level import Level
 from src.Player import Player
 from src.Models.Point import Point
-from src.Score import Score
+from src.UI.Score import Score
 
 engine = Engine(50, 5, ".")
 mainLevel = Level(engine)

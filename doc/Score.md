@@ -12,8 +12,9 @@ By default:
 - `predecessorScore = "- "`: A string that appears before each score.
 
 Example:
+
 ```python
-from src.Score import Score
+from src.UI.Score import Score
 
 score = Score()
 score.addScore("PlayerScore", 100)
@@ -61,6 +62,7 @@ Returns the current predecessor string.
 # Example of little project
 
 In this scenario, we want to add a point to the player once he/she is jumping:
+
 ```python
 import time
 import keyboard
@@ -68,7 +70,7 @@ from src.Engine import Engine
 from src.Level import Level
 from src.Player import Player
 from src.Models.Point import Point
-from src.Score import Score
+from src.UI.Score import Score
 
 engine = Engine(50, 5, ".")
 mainLevel = Level(engine)
@@ -80,7 +82,6 @@ scores.addScore("point", 0)  # create a special score for points gained by the p
 
 mainLevel.addObject(scores)  # add score objet
 mainLevel.addObject(PLAYER)
-
 
 engine.setCurrentLevel(mainLevel)
 engine.display()

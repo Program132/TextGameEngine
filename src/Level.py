@@ -5,7 +5,7 @@ from src.Models.Triangle import Triangle
 from src.Models.Rectangle import Rectangle
 from src.Models.Circle import Circle
 from src.Player import Player
-from src.Score import Score
+from src.UI.Score import Score
 
 
 class Level:
