@@ -4,43 +4,56 @@ from src.Engine import Engine
 from src.Level import Level
 from src.Player import Player
 from src.Models.Point import Point
+from src.Score import Score
 
 engine = Engine(50, 5, ".")
 mainLevel = Level(engine)
 
-PLAYER = Player(3, 1, 'P')
-wall_left = Point(5, 3)
-wall_left.setCanCollide(True)
+PLAYER = Player(3, 5, 'P')
 
+scores = Score()
+scores.addScore("point", 0)  # create a special score for points gained by the player
+
+mainLevel.addObject(scores)  # add score objet
 mainLevel.addObject(PLAYER)
-mainLevel.addObject(wall_left)
+
+
 engine.setCurrentLevel(mainLevel)
 engine.display()
 
 
 def manageKeysPressed(event):
-    if event.name == "w" or event.name == "z":
-        mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-        PLAYER.moveUp()
-        currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-        else:
-            PLAYER.moveDown()
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-    elif event.name == "s":
-        mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-        PLAYER.moveDown()
-        currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-        else:
+    if event.name == "space" or event.name == "espace":
+        # Manage score
+
+        scores.updateScore("point", scores.getScore("point") + 1)
+        mainLevel.updateLevelScore(scores)
+
+        # Animation when the player jump:
+        for i in range(0, 2):
+            mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
             PLAYER.moveUp()
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
+            currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
+            if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
+                mainLevel.addObject(PLAYER)
+                engine.refresh()
+            else:
+                PLAYER.moveDown()
+                mainLevel.addObject(PLAYER)
+                engine.refresh()
+            time.sleep(0.35)
+        for i in range(2, 0, -1):
+            mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
+            PLAYER.moveDown()
+            currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
+            if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
+                mainLevel.addObject(PLAYER)
+                engine.refresh()
+            else:
+                PLAYER.moveUp()
+                mainLevel.addObject(PLAYER)
+                engine.refresh()
+            time.sleep(0.35)
     elif event.name == "d":
         mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
         PLAYER.moveRight()
