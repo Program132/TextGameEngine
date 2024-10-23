@@ -4,6 +4,7 @@ class Point:
         self.y = y
         self.char = c
         self.canCollide = False
+        self.tags = []
 
     def getX(self):
         return self.x
@@ -28,6 +29,20 @@ class Point:
 
     def setCanCollide(self, c: bool):
         self.canCollide = c
+
+    def hasTag(self, name: str):
+        for t in self.tags:
+            if t == name:
+                return True
+        return False
+
+    def addTag(self, name: str):
+        self.tags.append(name)
+
+    def removeTag(self, name: str):
+        for i in range(len(self.tags)):
+            if self.tags[i] == name:
+                del self.tags[i]
 
     def __str__(self):
         return f"({self.getX()}, {self.getY()})"
