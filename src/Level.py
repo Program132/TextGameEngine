@@ -5,6 +5,7 @@ from src.Models.Triangle import Triangle
 from src.Models.Rectangle import Rectangle
 from src.Models.Circle import Circle
 from src.Player import Player
+from src.Score import Score
 
 
 class Level:
@@ -12,6 +13,7 @@ class Level:
         self.objects = []
         self.engine = e
         self.points_map = {}
+        self.score = None
 
     def addObject(self, o):
         self.objects.append(o)
@@ -60,7 +62,17 @@ class Level:
         s = ""
 
         for obj in self.objects:
-            if isinstance(obj, Point):
+            if isinstance(obj, Score):
+                content = ""
+                if obj.showTitle():
+                    content += obj.getTitle()
+                for sName, sValue in obj.getScores().items():
+                    if obj.showPredecessorScore():
+                        content += f"{obj.getPredecessorScore()}{sName} : {sValue}\n"
+                    else:
+                        content += f"{sName} : {sValue}\n"
+                print(content)
+            elif isinstance(obj, Point):
                 self.points_map[(obj.getX(), obj.getY())] = obj.getChar()
             elif isinstance(obj, Segment):
                 for point in obj.getPoints():
@@ -91,3 +103,11 @@ class Level:
             return self.points_map[(x, y)]
         return None
 
+    def getLevelScore(self):
+        return self.score
+
+    def removeLevelScore(self):
+        self.score = None
+
+    def updateLevelScore(self, s: Score):
+        self.score = s
