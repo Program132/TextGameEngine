@@ -129,3 +129,11 @@ while running:
 [Player](doc/Circle.md): Player class, your main character in your game.
 
 [Score](doc/Score.md): Score class, create your own scores/data
+
+# Compile your project
+
+You have to install PyInstaller firstly: `pip install pyinstaller`
+
+Then you can run this command: `pyinstaller --onefile <path to main.py>`
+
+After some seconds, you should get an executable.
