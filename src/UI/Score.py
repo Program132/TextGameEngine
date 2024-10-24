@@ -3,7 +3,7 @@ class Score:
         self.scores = {}
         self.enableTitle = True
         self.enablePredecessorScore = True
-        self.title = "Score.md: \n"
+        self.title = "Score: \n"
         self.predecessorScore = "- "
 
     def getScores(self):
