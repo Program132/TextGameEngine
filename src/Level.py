@@ -73,26 +73,26 @@ class Level:
                         content += f"{sName} : {sValue}\n"
                 print(content)
             elif isinstance(obj, Point):
-                self.points_map[(obj.getX(), obj.getY())] = obj.getChar()
+                self.points_map[(obj.getX(), obj.getY())] = obj  # Store the Point object itself
             elif isinstance(obj, Segment):
                 for point in obj.getPoints():
-                    self.points_map[(point.getX(), point.getY())] = point.getChar()
+                    self.points_map[(point.getX(), point.getY())] = point
             elif isinstance(obj, Rectangle):
                 for point in obj.getPoints():
-                    self.points_map[(point.getX(), point.getY())] = point.getChar()
+                    self.points_map[(point.getX(), point.getY())] = point
             elif isinstance(obj, Triangle):
                 for point in obj.getPoints():
-                    self.points_map[(point.getX(), point.getY())] = point.getChar()
+                    self.points_map[(point.getX(), point.getY())] = point
             elif isinstance(obj, Circle):
                 for point in obj.getPoints():
-                    self.points_map[(point.getX(), point.getY())] = point.getChar()
+                    self.points_map[(point.getX(), point.getY())] = point
             elif isinstance(obj, Player):
-                self.points_map[(obj.getX(), obj.getY())] = obj.getChar()
+                self.points_map[(obj.getX(), obj.getY())] = obj
 
         for y in range(self.engine.getSizeY() + 1):
             for x in range(self.engine.getSizeX() + 1):
                 if (x, y) in self.points_map and self.points_map[(x, y)] is not None:
-                    s += self.points_map[(x, y)]
+                    s += self.points_map[(x, y)].getChar()  # Get the char from the object
                 else:
                     s += self.engine.getChar()
             s += "\n"
