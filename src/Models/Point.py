@@ -3,7 +3,7 @@ class Point:
         self.x = x
         self.y = y
         self.char = c
-        self.canCollide = False
+        self.canCollide = True
         self.tags = []
 
     def getX(self):
@@ -25,7 +25,7 @@ class Point:
         self.char = c
 
     def getCanCollide(self):
-        return bool(self.canCollide)
+        return self.canCollide
 
     def setCanCollide(self, c: bool):
         self.canCollide = c
