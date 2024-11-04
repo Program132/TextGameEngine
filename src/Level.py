@@ -71,6 +71,8 @@ class Level:
                         content += f"{obj.getPredecessorScore()}{sName} : {sValue}\n"
                     else:
                         content += f"{sName} : {sValue}\n"
+
+                content = obj.alignText(content, self.engine.getSizeX())
                 print(content)
             elif isinstance(obj, Point):
                 self.points_map[(obj.getX(), obj.getY())] = obj  # Store the Point object itself

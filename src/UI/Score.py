@@ -1,3 +1,10 @@
+from enum import Enum
+
+class Alignment(Enum):
+    LEFT = "left"
+    CENTER = "center"
+    RIGHT = "right"
+
 class Score:
     def __init__(self):
         self.scores = {}
@@ -5,6 +12,7 @@ class Score:
         self.enablePredecessorScore = True
         self.title = "Score: \n"
         self.predecessorScore = "- "
+        self.alignment = Alignment.LEFT
 
     def getScores(self):
         return self.scores
@@ -44,3 +52,21 @@ class Score:
 
     def getPredecessorScore(self):
         return self.predecessorScore
+
+    def setAlignment(self, alignment: Alignment):
+        self.alignment = alignment
+
+    def getAlignment(self):
+        return self.alignment
+
+    def alignText(self, text: str, width: int) -> str:
+        lines = text.split("\n")
+        aligned_text = ""
+        for line in lines:
+            if self.alignment == Alignment.CENTER:
+                aligned_text += line.center(width) + "\n"
+            elif self.alignment == Alignment.RIGHT:
+                aligned_text += line.rjust(width) + "\n"
+            else:  # ALIGN_LEFT
+                aligned_text += line.ljust(width) + "\n"
+        return aligned_text

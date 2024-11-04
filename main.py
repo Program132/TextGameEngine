@@ -1,115 +1,94 @@
 import time
+import random
 import keyboard
 
 from src.Engine import Engine
 from src.Level import Level
-from src.Models.Segment import Segment
-from src.Player import Player
 from src.Models.Point import Point
-from src.UI.Score import Score
+from src.UI.Score import Score, Alignment
 
-SIZE_X = 50
-SIZE_Y = 5
+SIZE_X = 20
+SIZE_Y = 10
 
-engine = Engine(SIZE_X, SIZE_Y, ".")
-mainLevel = Level(engine)
+engine = Engine(SIZE_X, SIZE_Y)
+level = Level(engine)
 
-PLAYER = Player(0, 4, 'X')
+snake = Point(5, 3)
+snake.addTag("snake")
+snake.setChar("S")
+snake.setCanCollide(False)
 
-scores = Score()
-scores.addScore("point", 0)
-
-floor = Segment(0, SIZE_Y, SIZE_X, SIZE_Y)
-floor.setChar("¯")
+score = Score()
+score.addScore("Size Snake", 1)
+score.setAlignment(Alignment.CENTER)
 
 
-def createStar(x, y):
+def spawnFruit():
+    x = random.randint(2, SIZE_X)
+    y = random.randint(2, SIZE_Y)
     p = Point(x, y)
-    p.setCanCollide(False)
     p.setChar("*")
-    p.addTag("star")
+    p.setCanCollide(False)
+    p.addTag("fruit")
     return p
 
 
-star1 = createStar(5, 2)
-star2 = createStar(15, 2)
-star3 = createStar(40, 1)
+direction = "down"
 
-mainLevel.addObject(PLAYER)
-mainLevel.addObject(floor)
-mainLevel.addObject(star1)
-mainLevel.addObject(star2)
-mainLevel.addObject(star3)
-mainLevel.addObject(scores)
 
-lastHoveredPoint = None
+def keyPressed(event):
+    global direction
+    if event.name == "bas" or event.name == "down":
+        direction = "down"
+    elif event.name == "haut" or event.name == "up":
+        direction = "up"
+    elif event.name == "gauche" or event.name == "left":
+        direction = "left"
+    elif event.name == "droite" or event.name == "right":
+        direction = "right"
 
-engine.setCurrentLevel(mainLevel)
+
+keyboard.on_press(keyPressed)
+
+level.addObject(snake)
+level.addObject(score)
+fruit = spawnFruit()
+level.addObject(fruit)
+
+engine.setCurrentLevel(level)
 engine.display()
-
-
-def manageKeysPressed(event):
-    if event.name == "space" or event.name == "espace":
-        # Animation when the player jump:
-        for i in range(0, 3):
-            mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-            PLAYER.moveUp()
-            currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-            if currentPoint is None or not currentPoint.getCanCollide():
-                # can do the action
-
-                if not currentPoint is None and currentPoint.hasTag("star"):
-                    scores.updateScore("point", scores.getScore("point") + 1)
-                    mainLevel.updateLevelScore(scores)
-
-                mainLevel.addObject(PLAYER)
-                engine.refresh()
-            else: # can't do the action
-                PLAYER.moveDown()
-                mainLevel.addObject(PLAYER)
-                engine.refresh()
-            time.sleep(0.35)
-        for i in range(3, 0, -1):
-            mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-            PLAYER.moveDown()
-            currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-            if currentPoint is None or not currentPoint.getCanCollide():
-                mainLevel.addObject(PLAYER)
-                engine.refresh()
-            else:
-                PLAYER.moveUp()
-                mainLevel.addObject(PLAYER)
-                engine.refresh()
-            time.sleep(0.35)
-    elif event.name == "d":
-        mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-        PLAYER.moveRight()
-        currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or not currentPoint.getCanCollide():
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-        else:
-            PLAYER.moveLeft()
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-    elif event.name == "q" or event.name == "a":
-        mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-        PLAYER.moveLeft()
-        currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or not currentPoint.getCanCollide():
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-        else:
-            PLAYER.moveRight()
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-
-
-keyboard.on_press(manageKeysPressed)
 
 running = True
 while running:
+    if (snake.getY() < 0 or snake.getY() > SIZE_Y) or (snake.getX() < 0 or snake.getX() > SIZE_X):
+        print("Game Over")
+        print("Score: " + str(score.getScore("Snake Size")))
+        exit(1)
+
+    level.removeObject(snake.getX(), snake.getY())
+    if direction == "down":
+        snake.setY(snake.getY() + 1)
+    elif direction == "up":
+        snake.setY(snake.getY() - 1)
+    elif direction == "left":
+        snake.setX(snake.getX() - 1)
+    elif direction == "right":
+        snake.setX(snake.getX() + 1)
+    level.addObject(snake)
+
+    # check if fruit at current XY:
+    currentPoint = level.getPoint(snake.getX(), snake.getY())
+    if currentPoint is not None and isinstance(currentPoint, Point) and currentPoint.hasTag("fruit"):
+        score.updateScore("Size Snake", score.getScore("Size Snake") + 1)
+        level.updateLevelScore(score)
+        level.removeObject(fruit.getX(), fruit.getY())
+        fruit = spawnFruit()
+        level.addObject(fruit)
+
+    engine.refresh()
+
     if keyboard.is_pressed("esc"):
         running = False
 
-    time.sleep(0.001)
+    pause_time = 0.800 / (score.getScore("Size Snake"))
+    time.sleep(pause_time)
