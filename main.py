@@ -62,7 +62,7 @@ running = True
 while running:
     if (snake.getY() < 0 or snake.getY() > SIZE_Y) or (snake.getX() < 0 or snake.getX() > SIZE_X):
         print("Game Over")
-        print("Score: " + str(score.getScore("Snake Size")))
+        print("Score: " + str(score.getScore("Size Snake")))
         exit(1)
 
     level.removeObject(snake.getX(), snake.getY())
