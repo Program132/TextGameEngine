@@ -1,3 +1,12 @@
+import os
+import time
+
+
+def clear_screen():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 
 class Engine:
@@ -21,9 +30,10 @@ class Engine:
         if self.mainLevel is not None:
             self.mainLevel.display()
 
-    def refresh(self):
-        print("\n" * 200)
+    def refresh(self, delay: float = 0.05):
+        clear_screen()
         self.display()
+        time.sleep(delay)
 
     def setCurrentLevel(self, l):
         self.mainLevel = l
