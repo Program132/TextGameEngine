@@ -1,9 +1,4 @@
-from enum import Enum
-
-class Alignment(Enum):
-    LEFT = "left"
-    CENTER = "center"
-    RIGHT = "right"
+from src.UI.Alignment import Alignment
 
 class Score:
     def __init__(self):
