@@ -14,70 +14,60 @@ class UIText:
         self.borderUpChar = "_"
         self.borderDownChar = "¯"
 
-    # Getters and Setters for pos_x
     def getPosX(self):
         return self.pos_x
 
     def setPosX(self, x: int):
         self.pos_x = x
 
-    # Getters and Setters for pos_y
     def getPosY(self):
         return self.pos_y
 
     def setPosY(self, y: int):
         self.pos_y = y
 
-    # Getters and Setters for size_x
     def getSizeX(self):
         return self.size_x
 
     def setSizeX(self, x: int):
         self.size_x = x
 
-    # Getters and Setters for size_y
     def getSizeY(self):
         return self.size_y
 
     def setSizeY(self, y: int):
         self.size_y = y
 
-    # Getters and Setters for alignment_x
     def getAlignmentX(self):
         return self.alignment_x
 
     def setAlignmentX(self, alignment):
         self.alignment_x = alignment
 
-    # Getters and Setters for alignment_y
     def getAlignmentY(self):
         return self.alignment_y
 
     def setAlignmentY(self, alignment):
         self.alignment_y = alignment
 
-    # Getters and Setters for text
     def getText(self):
         return self.text
 
     def setText(self, text: str):
         self.text = text
 
-    # Getters and Setters for borderLeftRightChar
     def getBorderLeftRightChar(self):
         return self.borderLeftRightChar
 
     def setBorderLeftRightChar(self, char: str):
         self.borderLeftRightChar = char
 
-    # Getters and Setters for borderUpChar
     def getBorderUpChar(self):
         return self.borderUpChar
 
     def setBorderUpChar(self, char: str):
         self.borderUpChar = char
 
-    # Getters and Setters for borderDownChar
     def getBorderDownChar(self):
         return self.borderDownChar
 
