@@ -12,5 +12,6 @@ playsound==1.2.2
 pyparsing==3.2.0
 python-dateutil==2.9.0.post0
 setuptools==75.3.0
+simpleaudio==1.0.4
 six==1.16.0
 wheel==0.44.0
