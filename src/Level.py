@@ -116,3 +116,9 @@ class Level:
 
     def getObjectsByTag(self, tag: str):
         return [obj for obj in self.objects if hasattr(obj, 'getTags') and tag in obj.getTags()]
+
+    def clear(self):
+        """Supprime tous les objets du niveau et réinitialise les données associées."""
+        self.objects.clear()
+        self.points_map.clear()
+        self.score = None
