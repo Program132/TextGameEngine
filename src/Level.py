@@ -113,3 +113,6 @@ class Level:
 
     def updateLevelScore(self, s: Score):
         self.score = s
+
+    def getObjectsByTag(self, tag: str):
+        return [obj for obj in self.objects if hasattr(obj, 'getTags') and tag in obj.getTags()]
