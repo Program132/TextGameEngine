@@ -1,5 +1,6 @@
 from src.UI.Alignment import Alignment
 
+
 class Score:
     def __init__(self):
         self.scores = {}
