@@ -16,6 +16,7 @@ def example_callback():
     print("Key pressed!")
 
 input_listener = Inputs("a", example_callback)
+input_listener.listenForInput()
 ```
 
 # Methods
