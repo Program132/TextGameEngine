@@ -1,117 +1,33 @@
 # Description
 
-Manage keys pressed by user, we use the libs _keyboard_ and _time_.
+The `Inputs` class provides a way to listen for keyboard input and trigger specific callbacks when a particular key is pressed. It helps manage user input in an efficient way, tracking both the key state and associated action.
 
-# Example
+# Constructors
 
-We get every keys pressed in the function manageKeysPressed, and we added a point for a test:
+Create an `Inputs` instance by specifying:
+- `key` : The key to listen for (case-insensitive)
+- `callback` : The function to be called when the key is pressed
 
+Example of creating an `Inputs` instance:
 ```python
-from src.Engine import Engine
-from src.Level import Level
-from src.Models.Point import Point
-import keyboard
-import time
+from src.Inputs import Inputs
 
-engine = Engine(50, 5, ".")
-mainLevel = Level(engine)
+def example_callback():
+    print("Key pressed!")
 
-mainLevel.addObject(Point(5, 1))
-engine.setCurrentLevel(mainLevel)
-engine.display()
-
-
-def manageKeysPressed(event):
-    print(event.name)
-
-
-keyboard.on_press(manageKeysPressed)
-
-running = True
-while running:
-    if keyboard.is_pressed("esc"):
-        running = False
-    time.sleep(0.1)
+input_listener = Inputs("a", example_callback)
 ```
 
-Move a point (on the y-axis):
+# Methods
 
-```python
-from src.Engine import Engine
-from src.Level import Level
-import keyboard
-import time
-from src.Models.Point import Point
+`listenForInput()`
+Continuously listens for the specified key. When the key is pressed, if it is the first press (not held down), it triggers the callback function.
 
-engine = Engine(50, 5, ".")
-mainLevel = Level(engine)
+`setKey(key: str)`
+Sets a new key for the listener. This key will be used for input detection.
 
-PLAYER_POINT = Point(3, 1)
+`setCallback(callback)`
+Sets or updates the callback function. Only callable functions will be assigned.
 
-mainLevel.addObject(PLAYER_POINT)
-engine.setCurrentLevel(mainLevel)
-engine.display()
-
-
-def manageKeysPressed(event):
-    if event.name == "w" or event.name == "z":
-        mainLevel.removeObject(PLAYER_POINT.getX(), PLAYER_POINT.getY())
-        PLAYER_POINT.setY(PLAYER_POINT.getY() - 1)
-        mainLevel.addObject(PLAYER_POINT)
-        engine.refresh()
-    elif event.name == "s":
-        mainLevel.removeObject(PLAYER_POINT.getX(), PLAYER_POINT.getY())
-        PLAYER_POINT.setY(PLAYER_POINT.getY() + 1)
-        mainLevel.addObject(PLAYER_POINT)
-        engine.refresh()
-
-
-keyboard.on_press(manageKeysPressed)
-
-running = True
-while running:
-    if keyboard.is_pressed("esc"):
-        running = False
-
-    time.sleep(0.001)
-```
-
-Using Player class:
-```python
-import time
-import keyboard
-from src.Engine import Engine
-from src.Level import Level
-from src.Player import Player
-
-engine = Engine(50, 5, ".")
-mainLevel = Level(engine)
-
-PLAYER = Player(3, 1, 'P')
-
-mainLevel.addObject(PLAYER)
-engine.setCurrentLevel(mainLevel)
-engine.display()
-
-def manageKeysPressed(event):
-    if event.name == "w" or event.name == "z":
-        mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-        PLAYER.setY(PLAYER.getY() - 1)
-        mainLevel.addObject(PLAYER)
-        engine.refresh()
-    elif event.name == "s":
-        mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-        PLAYER.setY(PLAYER.getY() + 1)
-        mainLevel.addObject(PLAYER)
-        engine.refresh()
-
-
-keyboard.on_press(manageKeysPressed)
-
-running = True
-while running:
-    if keyboard.is_pressed("esc"):
-        running = False
-
-    time.sleep(0.001)
-```
+`getKey()`
+Returns the current key that the listener is monitoring.
