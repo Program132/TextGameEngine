@@ -94,7 +94,7 @@ class Level:
         for y in range(self.engine.getSizeY() + 1):
             for x in range(self.engine.getSizeX() + 1):
                 if (x, y) in self.points_map and self.points_map[(x, y)] is not None:
-                    s += self.points_map[(x, y)].getChar()  # Get the char from the object
+                    s += self.points_map[(x, y)].getChar()
                 else:
                     s += self.engine.getChar()
             s += "\n"
