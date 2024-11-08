@@ -4,7 +4,7 @@ import keyboard
 class UIButton(UIText):
     def __init__(self, x: int = 3, y: int = 0, sx: int = 6, sy: int = 1, key: str = 'S'):
         super().__init__(x, y, sx, sy)
-        self.key = key
+        self.key = key.lower()
         self.text += f" ({self.key})"
         self.on_click_callback = None
         self.is_pressed = False
