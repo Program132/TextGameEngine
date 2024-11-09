@@ -14,10 +14,12 @@ By default:
 Example:
 
 ```python
-from src.UI.Score import Score
+from src.UI import Alignment, Score
 
 score = Score()
 score.addScore("PlayerScore", 100)
+score.setTitle("High Scores")
+score.setAlignment(Alignment.CENTER)
 print(score.getScore("PlayerScore"))
 ```
 
@@ -42,7 +44,7 @@ Enables or disables the display of the title.
 Enables or disables the display of the predecessor score.
 
 `setTitle(n: str)`
-Sets a new title for the scores display.
+Sets a new title for the score display.
 
 `setPredecessorScore(n: str)`
 Sets a new predecessor string for the score display.
@@ -59,96 +61,11 @@ Returns the current title.
 `getPredecessorScore()`
 Returns the current predecessor string.
 
-# Example of little project
+`setAlignment(alignment: Alignment)`
+Sets the alignment for the text displayed in the score output. Available options are Alignment.LEFT, Alignment.CENTER, and Alignment.RIGHT.
 
-In this scenario, we want to add a point to the player once he/she is jumping:
+`getAlignment()`
+Returns the current alignment setting.
 
-```python
-import time
-import keyboard
-from src.Engine import Engine
-from src.Level import Level
-from src.Player import Player
-from src.Models.Point import Point
-from src.UI.Score import Score
-
-engine = Engine(50, 5, ".")
-mainLevel = Level(engine)
-
-PLAYER = Player(3, 5, 'P')
-
-scores = Score()
-scores.addScore("point", 0)  # create a special score for points gained by the player
-
-mainLevel.addObject(scores)  # add score objet
-mainLevel.addObject(PLAYER)
-
-engine.setCurrentLevel(mainLevel)
-engine.display()
-
-
-def manageKeysPressed(event):
-    if event.name == "space" or event.name == "espace":
-        # Manage score
-
-        scores.updateScore("point", scores.getScore("point") + 1)
-        mainLevel.updateLevelScore(scores)
-
-        # Animation when the player jump:
-        for i in range(0, 2):
-            mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-            PLAYER.moveUp()
-            currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-            if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
-                mainLevel.addObject(PLAYER)
-                engine.refresh()
-            else:
-                PLAYER.moveDown()
-                mainLevel.addObject(PLAYER)
-                engine.refresh()
-            time.sleep(0.35)
-        for i in range(2, 0, -1):
-            mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-            PLAYER.moveDown()
-            currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-            if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
-                mainLevel.addObject(PLAYER)
-                engine.refresh()
-            else:
-                PLAYER.moveUp()
-                mainLevel.addObject(PLAYER)
-                engine.refresh()
-            time.sleep(0.35)
-    elif event.name == "d":
-        mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-        PLAYER.moveRight()
-        currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-        else:
-            PLAYER.moveLeft()
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-    elif event.name == "q" or event.name == "a":
-        mainLevel.removeObject(PLAYER.getX(), PLAYER.getY())
-        PLAYER.moveLeft()
-        currentPoint = mainLevel.getPoint(PLAYER.getX(), PLAYER.getY())
-        if currentPoint is None or (isinstance(currentPoint, Point) and not currentPoint.canCollide()):
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-        else:
-            PLAYER.moveRight()
-            mainLevel.addObject(PLAYER)
-            engine.refresh()
-
-
-keyboard.on_press(manageKeysPressed)
-
-running = True
-while running:
-    if keyboard.is_pressed("esc"):
-        running = False
-
-    time.sleep(0.001)
-```
+`alignText(text: str, width: int) -> str`
+Applies the specified alignment to the given text, fitting it within the specified width. This method uses the alignment attribute to determine how to align each line (left, center, or right).
