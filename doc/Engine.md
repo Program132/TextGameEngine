@@ -1,8 +1,8 @@
 # Description
 
-The main class which contain objects, parameter for your game, etc.
+The main class which contains objects, parameter for your game, etc.
 
-You can set size of your game, add objects, remove objects, the character for the background.
+You can set the size of your game, add objects, remove objects, the character for the background.
 
 # Constructor
 
@@ -15,12 +15,14 @@ By default:
 Define a specific "window": ``Engine(X, Y)``, 
 example:
 ```python
+from src import Engine
 e = Engine(10,10)
 ```
 
 Define a specific "window" and another character as background: ``Engine(X, Y, CHAR)``, 
 example:
 ```python
+from src import Engine
 e = Engine(10,10, "A")
 ```
 
