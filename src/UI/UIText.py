@@ -12,7 +12,7 @@ class UIText:
         self.text = "Text"
         self.borderLeftRightChar = "|"
         self.borderUpChar = "_"
-        self.borderDownChar = "¯"
+        self.borderBottomChar = "¯"
 
     def getPosX(self):
         return self.pos_x
@@ -68,11 +68,11 @@ class UIText:
     def setBorderUpChar(self, char: str):
         self.borderUpChar = char
 
-    def getBorderDownChar(self):
-        return self.borderDownChar
+    def getBorderBottomChar(self):
+        return self.borderBottomChar
 
-    def setBorderDownChar(self, char: str):
-        self.borderDownChar = char
+    def setBorderBottomChar(self, char: str):
+        self.borderBottomChar = char
 
     def getPoints(self):
         points = []
@@ -120,6 +120,6 @@ class UIText:
             points.append(Point(self.pos_x + self.size_x - 1, self.pos_y + y, self.borderLeftRightChar))
 
         for x in range(self.size_x):
-            points.append(Point(self.pos_x + x, self.pos_y + self.size_y + 1, self.borderDownChar))
+            points.append(Point(self.pos_x + x, self.pos_y + self.size_y + 1, self.borderBottomChar))
 
         return points
