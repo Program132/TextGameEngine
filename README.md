@@ -128,7 +128,17 @@ while running:
 
 [Player](doc/Circle.md): Player class, your main character in your game.
 
+[Alignment](doc/Alignment.md) Alignment Enumeration, used for UIs
+
 [Score](doc/Score.md): Score class, create your own scores/data
+
+[UILevel](doc/UILevel.md) UILevel class, same thing as Level class but to create UIs.
+
+[UIText](doc/UIText.md) UIText class
+
+[UIButton](doc/UIButton.md) UIButton class
+
+[Sounds](doc/Sounds.md) Sounds class, play music/sound when you want
 
 # Compile your project
 
