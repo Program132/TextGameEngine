@@ -1,0 +1,23 @@
+# Python cache
+__pycache__/
+**/__pycache__/
+
+# Virtual environment
+env/
+
+# Build / Distribution
+build/
+dist/
+*.spec
+
+# PyInstaller hooks cache
+hooks/__pycache__/
+
+# Examples cache
+examples/__pycache__/
+
+# Other
+background.wav
+
+# Git
+.git/
